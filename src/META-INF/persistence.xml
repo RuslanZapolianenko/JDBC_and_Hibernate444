@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Корневой тег persistence-->
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+<!--    Внутри persistence будет тег persistence-unit, с атрибутом name = mohr. Мы обратимся сюда по этому имени при создании фабрики-->
+	<persistence-unit name="mohr" transaction-type="RESOURCE_LOCAL">
+<!--		Провайдер будем пользовать из гибернейта-->
+    	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+<!--		Вот наши настройки:-->
+        <properties>
+       		<property name="hibernate.archive.autodetection" value="class" />
+       		 
+            <!-- Основные настройки: диалект, драйвер, путь к схеме БД, юзер, пароль и действия в случае добавления данных -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/homework_04_DB?serverTimezone=UTC" />
+			<property name="hibernate.connection.user" value="root" />
+			<property name="hibernate.connection.password" value="root" />
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+ 
+            <!--Настройки информации, которая будет уходить в логи-->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="use_sql_comments" value="true" />
+			
+		</properties>
+    </persistence-unit>
+</persistence>

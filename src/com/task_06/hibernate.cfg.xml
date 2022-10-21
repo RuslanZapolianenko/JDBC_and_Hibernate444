@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <session-factory>
+
+        <property name = "hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <property name = "hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<!--Указываем новую схему БД-->
+        <property name = "hibernate.connection.url">jdbc:mysql://localhost:3306/library?serverTimezone=UTC</property>
+
+
+        <property name = "hibernate.connection.username">root</property>
+
+        <property name = "hibernate.connection.password">root</property>
+<!--        Коннекшн пулл может быть и больше. Считают оптимальным 10-->
+        <property name="connection.pool_size">2</property>
+        
+        <!--<property name="cache.provider_class">
+            org.hibernate.cache.NoCacheRegionFactoryAvailableException
+        </property>-->
+
+       <!-- <property name="hbm2ddl.auto">create</property>-->
+<!--Просто будем наблюдать за нашими запросами-->
+        <property name="show_sql">true</property>
+
+<!--В данном примере указываем два класса маппинга-->
+        <mapping class="com.task_06.entity.Author" />
+        <mapping class="com.task_06.entity.Book" />
+
+
+    </session-factory>
+
+</hibernate-configuration>
