@@ -28,7 +28,7 @@ public class AnimalHelper {
     }
 
     public AnimalA getById(int id) {
-//        Начинаем транзакцию
+//        Начинаем транзакцию --
         em.getTransaction().begin();
 //        Находим клиента по id
         AnimalA animalA = em.find(AnimalA.class, id);
